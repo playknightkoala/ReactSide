@@ -1,5 +1,6 @@
 import "../css/App.css";
-import PropTest from "../components/propsTest";
+import PropTest from "../components/PropsTest";
+import ComponentsTest from "../components/ComponentsTest";
 
 const redColor = { color: "red" };
 
@@ -37,6 +38,7 @@ function App() {
       {helloList}
       {button()}
       <PropTest name="我是props" handleClick={changeText}></PropTest>
+      <ComponentsTest></ComponentsTest>
       <div id="clickTestDiv"></div>
     </div>
   );

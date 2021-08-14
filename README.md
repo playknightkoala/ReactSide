@@ -256,4 +256,95 @@ ReactDOM.render(
 );
 ```
 
+### **onClick事件:**  
+
+未使用React之前所使用的方法:
+```js
+<button value="true" onclick="functionName()">
+    點一下
+</button>
+```
+
+使用React的方法:  
+***此處注意onClick為駝峰式命名，如使用onChange意同***
+
+```js
+<button value={ true } onClick={ getButtonValue }>
+    點一下
+</button>
+
+const getButtonValue = (event) => {
+  console.log(event.target.value);
+};
+```
+
+## Component:
+React有提供Component的功能，可將功能性的原件做模組化，簡單來說就是將功能積木化，之後在開發功能的時候就可以將各個積木組合起來變成一個新的頁面或功能，透過組件和頁面的分類，也可以讓功能和頁面分的更清楚，而非傳統的頁面將所有功能都寫在同一個頁面。
+
+```js
+// src/views/App.js
+import ComponentsTest from "../components/componentsTest";
+
+function App() {
+  return (
+    <div>
+      <ComponentsTest></ComponentsTest>
+      <ComponentsTest></ComponentsTest>
+      <ComponentsTest></ComponentsTest>
+    </div>
+  );
+}
+
+export default App;
+```
+
+```js
+// src/components/ComponentsTest.js
+function componentsTest(props) {
+  return (
+    <button>
+      componentsTest點一下
+    </button>
+  );
+}
+
+export default componentsTest;
+```
+
+## Props:
+透過props的放式，父主件可以跟子主件做溝通，也可做function的傳遞。
+
+```js
+// src/views/App.js
+import PropTest from "../components/PropsTest";
+
+const changeText = () => {
+  document.getElementById("clickTestDiv").innerHTML = "點擊了我";
+}
+
+function App() {
+  return (
+    <div>
+      <PropTest name="我是props" handleClick={changeText}></PropTest>
+      <div id="clickTestDiv"></div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+```js
+// src/components/PropsTest.js
+function propTest(props) {
+  return (
+    <button onClick={props.handleClick}>
+      {props.name}
+    </button>
+  );
+}
+
+export default propTest;
+```
+
 ## 未完待續...
